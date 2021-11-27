@@ -24,6 +24,7 @@ function __internal_yay_install() {
     fi
 }
 # General use packages
+__internal_pacman_install "wget"
 __internal_pacman_install "firefox"
 __internal_pacman_install "ttf-roboto"
 __internal_pacman_install "ttf-roboto-mono"
