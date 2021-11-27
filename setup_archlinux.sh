@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 function __internal_pacman_install() {
     if pacman -Q "$1" | grep -i "$1" >/dev/null 2>&1; then
-        echo "already installed [$1]"
+        echo "pacman already installed [$1]"
     else
         echo "sudo pacman -S $1"
         sudo pacman -S "$1"
@@ -9,10 +9,18 @@ function __internal_pacman_install() {
 }
 function __internal_pacman_group_install() {
     if pacman -Qg "$1" | grep -i "$1" >/dev/null 2>&1; then
-        echo "already installed [$1]"
+        echo "pacman already installed [$1]"
     else
         echo "sudo pacman -S $1"
         sudo pacman -S "$1"
+    fi
+}
+function __internal_yay_install() {
+    if yay -Q "$1" | grep -i "$1" >/dev/null 2>&1; then
+        echo "yay already installed [$1]"
+    else
+        echo "yay -S $1"
+        yay -S "$1"
     fi
 }
 __internal_pacman_install "firefox"
@@ -64,3 +72,16 @@ else
         git clone https://github.com/luoxu34/zfs-completion.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/plugins/zfs-completion
     fi
 fi
+if [[ ! -d "$HOME/yay-git" ]]; then
+    git clone https://aur.archlinux.org/yay-git.git "$HOME"/yay-git
+    cd yay-git || return
+    makepkg -si
+fi
+__internal_yay_install brave-bin
+__internal_yay_install optimus-manager
+__internal_yay_install albert
+__internal_yay_install google-chrome
+__internal_yay_install arc-icon-theme-git
+__internal_yay_install numix-circle-icon-theme-git
+__internal_yay_install arc-icon-theme-git
+__internal_yay_install icaclient
