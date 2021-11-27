@@ -24,52 +24,54 @@ function __internal_yay_install() {
     fi
 }
 # General use packages
-__internal_pacman_install "wget"
-__internal_pacman_install "firefox"
-__internal_pacman_install "ttf-roboto"
-__internal_pacman_install "ttf-roboto-mono"
-__internal_pacman_install "ttf-jetbrains-mono"
-__internal_pacman_install "iw"
-__internal_pacman_install "iwd"
-__internal_pacman_install "git"
-__internal_pacman_install "pulseaudio"
-__internal_pacman_install "pulseaudio-bluetooth"
-__internal_pacman_install "mesa-demos"
-__internal_pacman_install "nvidia-prime"
-__internal_pacman_install "nvidia-settings"
-__internal_pacman_install "muparser"
-__internal_pacman_install "mlocate"
-__internal_pacman_install "google-chrome"
-__internal_pacman_install "linux-lts"
-__internal_pacman_install "linux-lts-headers"
-__internal_pacman_install "linux-zen"
-__internal_pacman_install "linux-zen-headers"
-__internal_pacman_install "arc-gtk-theme"
-__internal_pacman_install "bluez"
-__internal_pacman_install "bluez-utils"
-__internal_pacman_install "blueman"
-__internal_pacman_group_install "base-devel"
-__internal_pacman_install "papirus-icon-theme"
+__internal_pacman_install wget
+__internal_pacman_install firefox
+__internal_pacman_install ttf-roboto
+__internal_pacman_install ttf-roboto-mono
+__internal_pacman_install ttf-jetbrains-mono
+__internal_pacman_install iw
+__internal_pacman_install iwd
+__internal_pacman_install git
+__internal_pacman_install pulseaudio
+__internal_pacman_install pulseaudio-bluetooth
+__internal_pacman_install mesa-demos
+__internal_pacman_install nvidia-prime
+__internal_pacman_install nvidia-settings
+__internal_pacman_install muparser
+__internal_pacman_install mlocate
+__internal_pacman_install google-chrome
+__internal_pacman_install linux-lts
+__internal_pacman_install linux-lts-headers
+__internal_pacman_install linux-zen
+__internal_pacman_install linux-zen-headers
+__internal_pacman_install arc-gtk-theme
+__internal_pacman_install bluez
+__internal_pacman_install bluez-utils
+__internal_pacman_install blueman
+__internal_pacman_group_install base-devel
+__internal_pacman_install papirus-icon-theme
+__internal_pacman_install lightdm-gtk-greeter-settings
 
 # Development packages
-__internal_pacman_install "jdk8-openjdk"
-__internal_pacman_install "redis"
-__internal_pacman_install "docker"
-__internal_pacman_install "docker-compose"
-__internal_pacman_install "zsh"
-__internal_pacman_install "terminator"
-__internal_pacman_install "shfmt"
-__internal_pacman_install "shellcheck"
-__internal_pacman_install "npm"
-__internal_pacman_install "nodejs"
-__internal_pacman_install "lapack"
-__internal_pacman_install "blas"
-__internal_pacman_install "cmake"
-__internal_pacman_install "xfsprogs"
-__internal_pacman_install "btrfs-progs"
-__internal_pacman_install "postgresql"
-__internal_pacman_install "clang"
-__internal_pacman_install "mkcert"
+__internal_pacman_install neofetch
+__internal_pacman_install jdk8-openjdk
+__internal_pacman_install redis
+__internal_pacman_install docker
+__internal_pacman_install docker-compose
+__internal_pacman_install zsh
+__internal_pacman_install terminator
+__internal_pacman_install shfmt
+__internal_pacman_install shellcheck
+__internal_pacman_install npm
+__internal_pacman_install nodejs
+__internal_pacman_install lapack
+__internal_pacman_install blas
+__internal_pacman_install cmake
+__internal_pacman_install xfsprogs
+__internal_pacman_install btrfs-progs
+__internal_pacman_install postgresql
+__internal_pacman_install clang
+__internal_pacman_install mkcert
 
 # Install AUR helper yay
 if [[ ! -d "$HOME/yay-git" ]]; then
@@ -85,6 +87,7 @@ __internal_yay_install arc-icon-theme-git
 __internal_yay_install numix-circle-icon-theme-git
 __internal_yay_install arc-icon-theme-git
 __internal_yay_install icaclient
+__internal_yay_install lightdm-webkit-theme-aether
 
 if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
