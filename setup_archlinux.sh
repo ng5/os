@@ -72,6 +72,10 @@ __internal_pacman_install btrfs-progs
 __internal_pacman_install postgresql
 __internal_pacman_install clang
 __internal_pacman_install mkcert
+__internal_pacman_install ripgrep
+__internal_pacman_install fzf
+__internal_pacman_install bat
+sudo ln -s /usr/bin/bat /usr/bin/batcat
 
 # Install AUR helper yay
 if [[ ! -d "$HOME/yay-git" ]]; then
