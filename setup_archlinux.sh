@@ -3,26 +3,27 @@ function __internal_pacman_install() {
     if pacman -Q "$1" | grep -i "$1" >/dev/null 2>&1; then
         echo "pacman already installed [$1]"
     else
-        echo "sudo pacman -S $1"
-        sudo pacman -S "$1"
+        echo "sudo pacman -S $1 --noconfirm"
+        sudo pacman -S "$1" --noconfirm
     fi
 }
 function __internal_pacman_group_install() {
     if pacman -Qg "$1" | grep -i "$1" >/dev/null 2>&1; then
         echo "pacman already installed [$1]"
     else
-        echo "sudo pacman -S $1"
-        sudo pacman -S "$1"
+        echo "sudo pacman -S $1 --noconfirm"
+        sudo pacman -S "$1" --noconfirm
     fi
 }
 function __internal_yay_install() {
     if yay -Q "$1" | grep -i "$1" >/dev/null 2>&1; then
         echo "yay already installed [$1]"
     else
-        echo "yay -S $1"
-        yay -S "$1"
+        echo "yay -S $1 --noconfirm"
+        yay -S "$1" --noconfirm
     fi
 }
+# General use packages
 __internal_pacman_install "firefox"
 __internal_pacman_install "ttf-roboto"
 __internal_pacman_install "ttf-roboto-mono"
@@ -47,14 +48,27 @@ __internal_pacman_install "bluez"
 __internal_pacman_install "bluez-utils"
 __internal_pacman_install "blueman"
 __internal_pacman_group_install "base-devel"
+__internal_pacman_install "papirus-icon-theme"
+
+# General use packages
+__internal_pacman_install "jdk8-openjdk"
 __internal_pacman_install "redis"
 __internal_pacman_install "docker"
 __internal_pacman_install "docker-compose"
-__internal_pacman_install "papirus-icon-theme"
 __internal_pacman_install "zsh"
 __internal_pacman_install "terminator"
 __internal_pacman_install "shfmt"
 __internal_pacman_install "shellcheck"
+__internal_pacman_install "npm"
+__internal_pacman_install "nodejs"
+__internal_pacman_install "lapack"
+__internal_pacman_install "blas"
+__internal_pacman_install "cmake"
+__internal_pacman_install "xfsprogs"
+__internal_pacman_install "btrfs-progs"
+__internal_pacman_install "postgresql"
+__internal_pacman_install "clang"
+
 if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 else
@@ -87,10 +101,10 @@ __internal_yay_install arc-icon-theme-git
 __internal_yay_install icaclient
 
 # These 7 programs seems to be spyware provided by Citrix
-sudo mv /opt/Citrix/ICAClient/AuthManagerDaemon /opt/Citrix/ICAClient/AuthManagerDaemon_Deleted
-sudo mv /opt/Citrix/ICAClient/icasessionmgr_Deleted /opt/Citrix/ICAClient/icasessionmgr_Deleted_Deleted
-sudo mv /opt/Citrix/ICAClient/NativeMessagingHost /opt/Citrix/ICAClient/NativeMessagingHost_Deleted
-sudo mv /opt/Citrix/ICAClient/PrimaryAuthManager /opt/Citrix/ICAClient/PrimaryAuthManager_Deleted
-sudo mv /opt/Citrix/ICAClient/selfservice /opt/Citrix/ICAClient/selfservice_Deleted
-sudo mv /opt/Citrix/ICAClient/ServiceRecord /opt/Citrix/ICAClient/ServiceRecord_Deleted
-sudo mv /opt/Citrix/ICAClient/UtilDaemon /opt/Citrix/ICAClient/UtilDaemon_Deleted
+sudo mv /opt/Citrix/ICAClient/AuthManagerDaemon /opt/Citrix/ICAClient/AuthManagerDaemon_Deleted 2>/dev/null
+sudo mv /opt/Citrix/ICAClient/icasessionmgr_Deleted /opt/Citrix/ICAClient/icasessionmgr_Deleted_Deleted 2>/dev/null
+sudo mv /opt/Citrix/ICAClient/NativeMessagingHost /opt/Citrix/ICAClient/NativeMessagingHost_Deleted 2>/dev/null
+sudo mv /opt/Citrix/ICAClient/PrimaryAuthManager /opt/Citrix/ICAClient/PrimaryAuthManager_Deleted 2>/dev/null
+sudo mv /opt/Citrix/ICAClient/selfservice /opt/Citrix/ICAClient/selfservice_Deleted 2>/dev/null
+sudo mv /opt/Citrix/ICAClient/ServiceRecord /opt/Citrix/ICAClient/ServiceRecord_Deleted 2>/dev/null
+sudo mv /opt/Citrix/ICAClient/UtilDaemon /opt/Citrix/ICAClient/UtilDaemon_Deleted 2>/dev/null
