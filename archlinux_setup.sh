@@ -30,6 +30,7 @@ function __internal_yay_install() {
 # __internal_pacman_install xf86-video-amdgpu
 
 # General use packages
+__internal_pacman_install inetutils
 __internal_pacman_install wget
 __internal_pacman_install firefox
 __internal_pacman_install ttf-roboto
