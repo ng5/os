@@ -95,6 +95,7 @@ __internal_yay_install arc-icon-theme-git
 __internal_yay_install numix-circle-icon-theme-git
 __internal_yay_install arc-icon-theme-git
 __internal_yay_install icaclient
+__internal_yay_install visual-studio-code-bin
 
 # These 7 programs seem to be spyware provided by Citrix
 sudo mv /opt/Citrix/ICAClient/AuthManagerDaemon /opt/Citrix/ICAClient/AuthManagerDaemon_Deleted 2>/dev/null
