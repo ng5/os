@@ -73,6 +73,9 @@ __internal_pacman_install jdk8-openjdk
 __internal_pacman_install redis
 __internal_pacman_install docker
 __internal_pacman_install docker-compose
+sudo usermod -a -G docker $USER
+sudo systemctl enable docker
+sudo systemctl restart docker
 __internal_pacman_install zsh
 __internal_pacman_install terminator
 __internal_pacman_install shfmt
