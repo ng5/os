@@ -80,7 +80,11 @@ __internal_pacman_install mkcert
 __internal_pacman_install ripgrep
 __internal_pacman_install fzf
 __internal_pacman_install bat
+__internal_pacman_install inetutils
+__internal_pacman_install pulseaudio
+__internal_pacman_install alsa-utils
 sudo ln -s /usr/bin/bat /usr/bin/batcat
+alsactl restore
 
 # Install AUR helper yay
 if [[ ! -d "$HOME/yay-git" ]]; then
