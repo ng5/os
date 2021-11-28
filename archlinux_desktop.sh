@@ -26,6 +26,7 @@ function __internal_yay_install() {
 __internal_pacman_install xorg
 __internal_pacman_group_install xfce4
 __internal_pacman_group_install xfce4-goodies
+__internal_pacman_install xfce4-pulseaudio-plugin
 __internal_pacman_group_install lightdm
 __internal_pacman_group_install lightdm-gtk-greeter
 sudo systemctl enable lightdm
