@@ -23,6 +23,12 @@ function __internal_yay_install() {
         yay -S "$1" --noconfirm
     fi
 }
+
+# graphics
+# __internal_pacman_install nvidia-prime
+# __internal_pacman_install nvidia-settings
+# __internal_pacman_install xf86-video-amdgpu
+
 # General use packages
 __internal_pacman_install wget
 __internal_pacman_install firefox
@@ -35,8 +41,6 @@ __internal_pacman_install git
 __internal_pacman_install pulseaudio
 __internal_pacman_install pulseaudio-bluetooth
 __internal_pacman_install mesa-demos
-__internal_pacman_install nvidia-prime
-__internal_pacman_install nvidia-settings
 __internal_pacman_install muparser
 __internal_pacman_install mlocate
 __internal_pacman_install google-chrome
@@ -84,15 +88,28 @@ if [[ ! -d "$HOME/yay-git" ]]; then
     makepkg -si
 fi
 __internal_yay_install brave-bin
-__internal_yay_install optimus-manager
+# __internal_yay_install optimus-manager
 __internal_yay_install albert
 __internal_yay_install google-chrome
 __internal_yay_install arc-icon-theme-git
 __internal_yay_install numix-circle-icon-theme-git
 __internal_yay_install arc-icon-theme-git
 __internal_yay_install icaclient
-__internal_yay_install lightdm-webkit-theme-aether
 
+# These 7 programs seem to be spyware provided by Citrix
+sudo mv /opt/Citrix/ICAClient/AuthManagerDaemon /opt/Citrix/ICAClient/AuthManagerDaemon_Deleted 2>/dev/null
+sudo mv /opt/Citrix/ICAClient/icasessionmgr_Deleted /opt/Citrix/ICAClient/icasessionmgr_Deleted_Deleted 2>/dev/null
+sudo mv /opt/Citrix/ICAClient/NativeMessagingHost /opt/Citrix/ICAClient/NativeMessagingHost_Deleted 2>/dev/null
+sudo mv /opt/Citrix/ICAClient/PrimaryAuthManager /opt/Citrix/ICAClient/PrimaryAuthManager_Deleted 2>/dev/null
+sudo mv /opt/Citrix/ICAClient/selfservice /opt/Citrix/ICAClient/selfservice_Deleted 2>/dev/null
+sudo mv /opt/Citrix/ICAClient/ServiceRecord /opt/Citrix/ICAClient/ServiceRecord_Deleted 2>/dev/null
+sudo mv /opt/Citrix/ICAClient/UtilDaemon /opt/Citrix/ICAClient/UtilDaemon_Deleted 2>/dev/null
+
+# Timezone file
+sudo rm -rf /etc/timezone
+sudo ln -s /usr/share/zoneinfo/Europe/London /etc/timezone
+
+# zsh
 if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 else
@@ -110,16 +127,3 @@ else
         git clone https://github.com/luoxu34/zfs-completion.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/plugins/zfs-completion
     fi
 fi
-
-# These 7 programs seem to be spyware provided by Citrix
-sudo mv /opt/Citrix/ICAClient/AuthManagerDaemon /opt/Citrix/ICAClient/AuthManagerDaemon_Deleted 2>/dev/null
-sudo mv /opt/Citrix/ICAClient/icasessionmgr_Deleted /opt/Citrix/ICAClient/icasessionmgr_Deleted_Deleted 2>/dev/null
-sudo mv /opt/Citrix/ICAClient/NativeMessagingHost /opt/Citrix/ICAClient/NativeMessagingHost_Deleted 2>/dev/null
-sudo mv /opt/Citrix/ICAClient/PrimaryAuthManager /opt/Citrix/ICAClient/PrimaryAuthManager_Deleted 2>/dev/null
-sudo mv /opt/Citrix/ICAClient/selfservice /opt/Citrix/ICAClient/selfservice_Deleted 2>/dev/null
-sudo mv /opt/Citrix/ICAClient/ServiceRecord /opt/Citrix/ICAClient/ServiceRecord_Deleted 2>/dev/null
-sudo mv /opt/Citrix/ICAClient/UtilDaemon /opt/Citrix/ICAClient/UtilDaemon_Deleted 2>/dev/null
-
-# Timezone file
-sudo rm -rf /etc/timezone
-sudo ln -s /usr/share/zoneinfo/Europe/London /etc/timezone
