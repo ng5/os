@@ -36,6 +36,16 @@ __internal_pacman_install firefox
 __internal_pacman_install ttf-roboto
 __internal_pacman_install ttf-roboto-mono
 __internal_pacman_install ttf-jetbrains-mono
+__internal_pacman_install ttf-caladea
+__internal_pacman_install ttf-carlito
+__internal_pacman_install ttf-dejavu
+__internal_pacman_install ttf-liberation
+__internal_pacman_install ttf-linux-libertine-g
+__internal_pacman_install noto-fonts
+__internal_pacman_install adobe-source-code-pro-fonts
+__internal_pacman_install adobe-source-sans-pro-fonts
+__internal_pacman_install adobe-source-serif-pro-fonts
+__internal_pacman_install libreoffice-still
 __internal_pacman_install iw
 __internal_pacman_install iwd
 __internal_pacman_install git
