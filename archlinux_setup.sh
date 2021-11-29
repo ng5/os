@@ -66,6 +66,11 @@ __internal_pacman_install blueman
 __internal_pacman_group_install base-devel
 __internal_pacman_install papirus-icon-theme
 __internal_pacman_install lightdm-gtk-greeter-settings
+__internal_pacman_install hdparm
+__internal_pacman_install xdotool
+__internal_pacman_install wmctrl
+sudo wget -O /usr/local/bin/move-to-next-monitor https://raw.githubusercontent.com/jc00ke/move-to-next-monitor/master/move-to-next-monitor 
+sudo chmod +x /usr/local/bin/move-to-next-monitor
 
 # Development packages
 __internal_pacman_install neofetch
