@@ -69,18 +69,15 @@ __internal_pacman_install lightdm-gtk-greeter-settings
 __internal_pacman_install hdparm
 __internal_pacman_install xdotool
 __internal_pacman_install wmctrl
-sudo wget -O /usr/local/bin/move-to-next-monitor https://raw.githubusercontent.com/jc00ke/move-to-next-monitor/master/move-to-next-monitor 
+sudo wget -O /usr/local/bin/move-to-next-monitor https://raw.githubusercontent.com/jc00ke/move-to-next-monitor/master/move-to-next-monitor
 sudo chmod +x /usr/local/bin/move-to-next-monitor
 
 # Development packages
 __internal_pacman_install neofetch
-__internal_pacman_install jdk8-openjdk
+__internal_pacman_install jdk11-openjdk
 __internal_pacman_install redis
 __internal_pacman_install docker
 __internal_pacman_install docker-compose
-sudo usermod -a -G docker $USER
-sudo systemctl enable docker
-sudo systemctl restart docker
 __internal_pacman_install zsh
 __internal_pacman_install terminator
 __internal_pacman_install shfmt
@@ -101,6 +98,20 @@ __internal_pacman_install bat
 __internal_pacman_install inetutils
 __internal_pacman_install pulseaudio
 __internal_pacman_install alsa-utils
+__internal_pacman_install virt-manager
+__internal_pacman_install qemu
+__internal_pacman_install ebtables
+__internal_pacman_install dnsmasq
+__internal_pacman_install bridge-utils
+__internal_pacman_install openbsd-netcat
+
+# enable docker & libvirtd
+sudo usermod -a -G docker "$(whoami)"
+sudo systemctl enable docker
+sudo systemctl restart docker
+sudo usermod -a -G libvirt "$(whoami)"
+sudo systemctl enable libvirtd.service
+sudo systemctl restart libvirtd.service
 sudo ln -s /usr/bin/bat /usr/bin/batcat
 alsactl restore
 
@@ -119,6 +130,11 @@ __internal_yay_install numix-circle-icon-theme-git
 __internal_yay_install arc-icon-theme-git
 __internal_yay_install icaclient
 __internal_yay_install visual-studio-code-bin
+__internal_yay_install clion
+__internal_yay_install webstorm
+__internal_yay_install android-studio
+__internal_yay_install goland
+__internal_yay_install pycharm-professional
 
 # These 7 programs seem to be spyware provided by Citrix
 sudo mv /opt/Citrix/ICAClient/AuthManagerDaemon /opt/Citrix/ICAClient/AuthManagerDaemon_Deleted 2>/dev/null
