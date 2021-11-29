@@ -119,7 +119,7 @@ alsactl restore
 if [[ ! -d "$HOME/yay-git" ]]; then
     git clone https://aur.archlinux.org/yay-git.git "$HOME"/yay-git
     cd yay-git || return
-    makepkg -si
+    makepkg -si --noconfirm
 fi
 __internal_yay_install brave-bin
 # __internal_yay_install optimus-manager
@@ -135,6 +135,13 @@ __internal_yay_install webstorm
 __internal_yay_install android-studio
 __internal_yay_install goland
 __internal_yay_install pycharm-professional
+
+# Accept android licenses
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+yes | ~/Android/Sdk/tools/bin/sdkmanager
+
+# Set default java to 11
+sudo archlinux-java set java-11-openjdk
 
 # These 7 programs seem to be spyware provided by Citrix
 sudo mv /opt/Citrix/ICAClient/AuthManagerDaemon /opt/Citrix/ICAClient/AuthManagerDaemon_Deleted 2>/dev/null
