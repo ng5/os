@@ -43,7 +43,8 @@ __internal_pacman_install ttf-caladea
 __internal_pacman_install ttf-carlito
 __internal_pacman_install ttf-dejavu
 __internal_pacman_install ttf-liberation
-__internal_pacman_install ttf-linux-libertine-g
+__internal_pacman_install ttf-droid
+__internal_pacman_install ttf-fira-code
 __internal_pacman_install noto-fonts
 __internal_pacman_install adobe-source-code-pro-fonts
 __internal_pacman_install adobe-source-sans-pro-fonts
@@ -76,7 +77,13 @@ sudo wget -O /usr/local/bin/move-to-next-monitor https://raw.githubusercontent.c
 sudo chmod +x /usr/local/bin/move-to-next-monitor
 
 # Development packages
+__internal_pacman_install gdb
+__internal_pacman_group_install base-devel
+__internal_pacman_group_install linux-headers
+__internal_pacman_install accountsservice
+__internal_pacman_install arandr
 __internal_pacman_install neofetch
+__internal_pacman_install jdk8-openjdk
 __internal_pacman_install jdk11-openjdk
 __internal_pacman_install redis
 __internal_pacman_install docker
@@ -140,6 +147,7 @@ __internal_yay_install webstorm
 __internal_yay_install android-studio
 __internal_yay_install goland
 __internal_yay_install pycharm-professional
+__internal_yay_install mugshot
 
 # Accept android licenses
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
