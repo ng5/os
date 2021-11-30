@@ -30,6 +30,9 @@ function __internal_yay_install() {
 # __internal_pacman_install xf86-video-amdgpu
 
 # General use packages
+__internal_pacman_install xarchiver
+__internal_pacman_install iperf3
+__internal_pacman_install p7zip
 __internal_pacman_install inetutils
 __internal_pacman_install wget
 __internal_pacman_install firefox
@@ -123,6 +126,8 @@ if [[ ! -d "$HOME/yay-git" ]]; then
 fi
 __internal_yay_install brave-bin
 # __internal_yay_install optimus-manager
+__internal_yay_install xfce4-panel-profiles
+__internal_yay_install p7zip-gui
 __internal_yay_install albert
 __internal_yay_install google-chrome
 __internal_yay_install arc-icon-theme-git
