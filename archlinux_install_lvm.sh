@@ -13,6 +13,9 @@ else
 fi
 echo "IS_INTEL - $IS_INTEL"
 echo "IS_AMD - $IS_AMD"
-if [[ $IS_INTEL ]]; then
+if $IS_INTEL; then
     echo "intel cpu"
+fi
+if $IS_AMD; then
+    echo "amd cpu"
 fi
