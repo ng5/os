@@ -73,6 +73,10 @@ __internal_pacman_install lightdm-gtk-greeter-settings
 __internal_pacman_install hdparm
 __internal_pacman_install xdotool
 __internal_pacman_install wmctrl
+__internal_pacman_install libmicrohttpd
+__internal_pacman_install systemd-journal-remote
+__internal_pacman_install lshw
+
 sudo wget -O /usr/local/bin/move-to-next-monitor https://raw.githubusercontent.com/jc00ke/move-to-next-monitor/master/move-to-next-monitor
 sudo chmod +x /usr/local/bin/move-to-next-monitor
 
