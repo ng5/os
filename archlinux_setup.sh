@@ -77,6 +77,10 @@ __internal_pacman_install libmicrohttpd
 __internal_pacman_install systemd-journal-remote
 __internal_pacman_install lshw
 
+# add to journalctl access
+sudo usermod -a -G systemd-journal "$(whoami)"
+sudo usermod -a -G systemd-journal-remote "$(whoami)"
+
 sudo wget -O /usr/local/bin/move-to-next-monitor https://raw.githubusercontent.com/jc00ke/move-to-next-monitor/master/move-to-next-monitor
 sudo chmod +x /usr/local/bin/move-to-next-monitor
 
