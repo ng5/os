@@ -122,6 +122,7 @@ __internal_pacman_install ebtables
 __internal_pacman_install dnsmasq
 __internal_pacman_install bridge-utils
 __internal_pacman_install openbsd-netcat
+__internal_pacman_install rust
 
 # enable docker & libvirtd
 sudo usermod -a -G docker "$(whoami)"
