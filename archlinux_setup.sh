@@ -30,6 +30,8 @@ function __internal_yay_install() {
 # __internal_pacman_install xf86-video-amdgpu
 
 # General use packages
+__internal_pacman_install nfs-utils
+__internal_pacman_install samba
 __internal_pacman_install xarchiver
 __internal_pacman_install iperf3
 __internal_pacman_install p7zip
