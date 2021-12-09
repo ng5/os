@@ -78,6 +78,7 @@ __internal_pacman_install wmctrl
 __internal_pacman_install libmicrohttpd
 __internal_pacman_install systemd-journal-remote
 __internal_pacman_install lshw
+__internal_pacman_install redshift
 
 # add to journalctl access
 sudo usermod -a -G systemd-journal "$(whoami)"
