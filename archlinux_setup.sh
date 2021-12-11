@@ -49,8 +49,8 @@ __internal_pacman_install ttf-droid
 __internal_pacman_install ttf-fira-code
 __internal_pacman_install noto-fonts
 __internal_pacman_install adobe-source-code-pro-fonts
-__internal_pacman_install adobe-source-sans-pro-fonts
-__internal_pacman_install adobe-source-serif-pro-fonts
+__internal_pacman_install adobe-source-sans-fonts
+__internal_pacman_install adobe-source-serif-fonts
 __internal_pacman_install libreoffice-still
 __internal_pacman_install iw
 __internal_pacman_install iwd
@@ -76,7 +76,6 @@ __internal_pacman_install hdparm
 __internal_pacman_install xdotool
 __internal_pacman_install wmctrl
 __internal_pacman_install libmicrohttpd
-__internal_pacman_install systemd-journal-remote
 __internal_pacman_install lshw
 __internal_pacman_install redshift
 
@@ -90,7 +89,7 @@ sudo chmod +x /usr/local/bin/move-to-next-monitor
 # Development packages
 __internal_pacman_install gdb
 __internal_pacman_group_install base-devel
-__internal_pacman_group_install linux-headers
+__internal_pacman_install linux-headers
 __internal_pacman_install accountsservice
 __internal_pacman_install arandr
 __internal_pacman_install neofetch
@@ -150,11 +149,18 @@ __internal_yay_install xfce4-panel-profiles
 __internal_yay_install p7zip-gui
 __internal_yay_install albert
 __internal_yay_install google-chrome
-__internal_yay_install arc-icon-theme-git
 __internal_yay_install numix-circle-icon-theme-git
-__internal_yay_install arc-icon-theme-git
 __internal_yay_install icaclient
 __internal_yay_install visual-studio-code-bin
+# Install visual code extensions
+code --install-extension --force foxundermoon.shell-format --force
+code --install-extension Shan.code-settings-sync --force
+code --install-extension eamodio.gitlens --force
+code --install-extension VisualStudioExptTeam.vscodeintellicode --force
+code --install-extension esbenp.prettier-vscode --force
+code --install-extension CoenraadS.bracket-pair-colorizer --force
+code --install-extension xabikos.JavaScriptSnippets --force
+
 __internal_yay_install clion
 __internal_yay_install webstorm
 __internal_yay_install android-studio
