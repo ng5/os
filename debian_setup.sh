@@ -24,7 +24,7 @@ export -f installZsh
 touch ~/.hushlogin
 apt update && apt upgrade
 apt remove -y nano
-apt install -y vim apt-listchanges autoconf automake bat btrfs-progs build-essential certbot cryptsetup fd-find fzf git iftop iperf3 libblas-dev libcurl4-openssl-dev libgmp-dev liblapack-dev libmpfr-dev libssl-dev libtool mlocate openjdk-11-jdk systemd-coredump traceroute tree ufw unattended-upgrades wget wireguard xfsprogs zfsutils-linux ripgrep zlib1g-dev zsh bpfcc-tools libbpfcc clang clang-format llvm gdb
+apt install -y vim apt-listchanges autoconf automake bat build-essential certbot cryptsetup fd-find fzf git iftop iperf3 libblas-dev libcurl4-openssl-dev libgmp-dev liblapack-dev libmpfr-dev libssl-dev libtool mlocate openjdk-11-jdk systemd-coredump traceroute tree ufw unattended-upgrades wget wireguard xfsprogs ripgrep zlib1g-dev zsh clang clang-format llvm gdb
 # Add user
 /sbin/useradd -m build
 /sbin/usermod -aG sudo build
