@@ -2,11 +2,12 @@
 touch ~/.hushlogin
 apt update && apt upgrade
 apt remove -y nano
-apt install -y vim apt-listchanges autoconf automake bat btrfs-progs build-essential certbot cryptsetup fd-find fzf git iftop iperf3 libblas-dev libcurl4-openssl-dev libgmp-dev liblapack-dev libmpfr-dev libssl-dev libtool mlocate openjdk-8-jdk systemd-coredump traceroute tree ufw unattended-upgrades usermod wget wireguard xfsprogs zfsutils-linux zlib1g-dev zsh
+apt install -y vim apt-listchanges autoconf automake bat btrfs-progs build-essential certbot cryptsetup fd-find fzf git iftop iperf3 libblas-dev libcurl4-openssl-dev libgmp-dev liblapack-dev libmpfr-dev libssl-dev libtool mlocate openjdk-11-jdk systemd-coredump traceroute tree ufw unattended-upgrades
+wget wireguard xfsprogs zfsutils-linux zlib1g-dev zsh
 
 # Add user
-useradd -m build
-usermod -aG sudo build
+/sbin/useradd -m build
+/sbin/usermod -aG sudo build
 cp -r ~/.ssh /home/build/
 chown -R build:build /home/build/.ssh
 chmod -R 700 /home/build/.ssh
@@ -14,8 +15,8 @@ touch /home/build/.hushlogin
 chown build:build /home/build/.hushlogin
 
 # change shell to zsh
-usermod --shell /usr/bin/zsh build
-usermod --shell /usr/bin/zsh root
+/sbin/usermod --shell /usr/bin/zsh build
+/sbin/usermod --shell /usr/bin/zsh root
 
 # Install docker
 apt install -y ca-certificates curl gnupg lsb-release
@@ -26,7 +27,7 @@ echo \
 apt update
 apt-get install -y docker-ce docker-ce-cli containerd.io
 /sbin/groupadd docker
-usermod -aG docker build
+/sbin/usermod -aG docker build
 systemctl enable docker
 systemctl start docker
 
