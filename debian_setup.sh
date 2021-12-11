@@ -37,10 +37,13 @@ apt install -y zsh
 
 useradd -m build
 usermod -aG sudo build
+cp -r ~/.ssh /home/build/
+chown -R build:build /home/build/.ssh
+chmod -R 700 /home/build/.ssh
 ufw disable
 ufw allow 22
 ufw allow from 172.17.0.0/16
 ufw allow from 172.17.0.0/16
 ufw allow from 192.168.0.0/24
 ufw allow from 192.168.5.0/16
-ufw enable
+echo "y" | ufw enable
