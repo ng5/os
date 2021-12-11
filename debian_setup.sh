@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
+
 function installZsh() {
+
     curl https://raw.githubusercontent.com/ng5/os/main/.zshenv >"$HOME"/.zshenv
     curl https://raw.githubusercontent.com/ng5/os/main/.zshrc >"$HOME"/.zshrc
     if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
@@ -25,7 +27,7 @@ touch ~/.hushlogin
 apt update && apt upgrade
 apt remove -y nano
 apt install -y vim apt-listchanges autoconf automake bat btrfs-progs build-essential certbot cryptsetup fd-find fzf git iftop iperf3 libblas-dev libcurl4-openssl-dev libgmp-dev liblapack-dev libmpfr-dev libssl-dev libtool mlocate openjdk-11-jdk systemd-coredump traceroute tree ufw unattended-upgrades
-wget wireguard xfsprogs zfsutils-linux ripgrep zlib1g-dev zsh bpfcc-tools python-bpfcc libbpfcc
+wget wireguard xfsprogs zfsutils-linux ripgrep zlib1g-dev zsh bpfcc-tools python-bpfcc libbpfcc clang clang-format llvm gdb
 
 # Add user
 /sbin/useradd -m build
@@ -51,7 +53,7 @@ apt-get install -y docker-ce docker-ce-cli containerd.io
 /sbin/groupadd docker
 /sbin/usermod -aG docker build
 systemctl enable docker
-systemctl start docker
+systemctl restart docker
 
 # Install firewall
 ufw disable
