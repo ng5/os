@@ -1,9 +1,4 @@
 #!/usr/bin/env bash
-printf "%s " "this script will update servers and install new packages (y/n)?"
-read -r answer
-if [ "$answer" != "y" ]; then
-    exit 0
-fi
 apt update && apt upgrade
 apt install -y apt-listchanges
 apt install -y autoconf
