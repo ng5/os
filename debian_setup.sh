@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
+touch ~/.hushlogin
 apt update && apt upgrade
+apt remove -y nano
+apt install -y vim
 apt install -y apt-listchanges
 apt install -y autoconf
 apt install -y automake
@@ -40,6 +43,9 @@ usermod -aG sudo build
 cp -r ~/.ssh /home/build/
 chown -R build:build /home/build/.ssh
 chmod -R 700 /home/build/.ssh
+touch /home/build/.hushlogin
+chown build:build /home/build/.hushlogin
+
 ufw disable
 ufw allow 22
 ufw allow from 172.17.0.0/16
