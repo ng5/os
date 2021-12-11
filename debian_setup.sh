@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-
 function installZsh() {
-
     curl https://raw.githubusercontent.com/ng5/os/main/.zshenv >"$HOME"/.zshenv
     curl https://raw.githubusercontent.com/ng5/os/main/.zshrc >"$HOME"/.zshrc
     if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
