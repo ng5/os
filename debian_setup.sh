@@ -47,6 +47,10 @@ chmod -R 700 /home/build/.ssh
 touch /home/build/.hushlogin
 chown build:build /home/build/.hushlogin
 
+# change shell to zsh
+usermod --shell /usr/bin/zsh build
+usermod --shell /usr/bin/zsh root
+
 # Install docker
 apt install -y ca-certificates
 apt install -y curl
@@ -71,3 +75,8 @@ ufw allow from 172.17.0.0/16
 ufw allow from 192.168.0.0/24
 ufw allow from 192.168.5.0/16
 echo "y" | ufw enable
+
+# Install ohmyzsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+su - build
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
