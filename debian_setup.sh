@@ -38,6 +38,7 @@ apt install -y zfsutils-linux
 apt install -y zlib1g-dev
 apt install -y zsh
 
+# Add user
 useradd -m build
 usermod -aG sudo build
 cp -r ~/.ssh /home/build/
@@ -46,6 +47,23 @@ chmod -R 700 /home/build/.ssh
 touch /home/build/.hushlogin
 chown build:build /home/build/.hushlogin
 
+# Install docker
+apt install -y ca-certificates
+apt install -y curl
+apt install -y gnupg
+apt install -y lsb-release
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
+apt update
+apt-get install -y docker-ce docker-ce-cli containerd.io
+/sbin/groupadd docker
+usermod -aG docker build
+systemctl enable docker
+systemctl start docker
+
+# Install firewall
 ufw disable
 ufw allow 22
 ufw allow from 172.17.0.0/16
