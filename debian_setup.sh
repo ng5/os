@@ -2,41 +2,7 @@
 touch ~/.hushlogin
 apt update && apt upgrade
 apt remove -y nano
-apt install -y vim
-apt install -y apt-listchanges
-apt install -y autoconf
-apt install -y automake
-apt install -y bat
-apt install -y btrfs-progs
-apt install -y build-essential
-apt install -y certbot
-apt install -y cryptsetup
-apt install -y fd-find
-apt install -y fzf
-apt install -y git
-apt install -y iftop
-apt install -y iperf3
-apt install -y libblas-dev
-apt install -y libcurl4-openssl-dev
-apt install -y libgmp-dev
-apt install -y liblapack-dev
-apt install -y libmpfr-dev
-apt install -y libssl-dev
-apt install -y libtool
-apt install -y mlocate
-apt install -y openjdk-8-jdk
-apt install -y systemd-coredump
-apt install -y traceroute
-apt install -y tree
-apt install -y ufw
-apt install -y unattended-upgrades
-apt install -y usermod
-apt install -y wget
-apt install -y wireguard
-apt install -y xfsprogs
-apt install -y zfsutils-linux
-apt install -y zlib1g-dev
-apt install -y zsh
+apt install -y vim apt-listchanges autoconf automake bat btrfs-progs build-essential certbot cryptsetup fd-find fzf git iftop iperf3 libblas-dev libcurl4-openssl-dev libgmp-dev liblapack-dev libmpfr-dev libssl-dev libtool mlocate openjdk-8-jdk systemd-coredump traceroute tree ufw unattended-upgrades usermod wget wireguard xfsprogs zfsutils-linux zlib1g-dev zsh
 
 # Add user
 useradd -m build
@@ -52,10 +18,7 @@ usermod --shell /usr/bin/zsh build
 usermod --shell /usr/bin/zsh root
 
 # Install docker
-apt install -y ca-certificates
-apt install -y curl
-apt install -y gnupg
-apt install -y lsb-release
+apt install -y ca-certificates curl gnupg lsb-release
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 echo \
     "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian \
@@ -79,4 +42,5 @@ echo "y" | ufw enable
 # Install ohmyzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 su - build
+cd /home/build || return
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
