@@ -1,9 +1,31 @@
 #!/usr/bin/env bash
+function installZsh() {
+    curl https://raw.githubusercontent.com/ng5/os/main/.zshenv >"$HOME"/.zshenv
+    curl https://raw.githubusercontent.com/ng5/os/main/.zshrc >"$HOME"/.zshrc
+    if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    else
+        echo "already installed [ohmyzsh]"
+        if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/fzf-tab" ]]; then
+            git clone https://github.com/Aloxaf/fzf-tab "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/plugins/fzf-tab
+        fi
+        if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]]; then
+            git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/plugins/zsh-syntax-highlighting
+        fi
+        if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]]; then
+            git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions
+        fi
+        if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zfs-completion" ]]; then
+            git clone https://github.com/luoxu34/zfs-completion.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/plugins/zfs-completion
+        fi
+    fi
+}
+export -f installZsh
 touch ~/.hushlogin
 apt update && apt upgrade
 apt remove -y nano
 apt install -y vim apt-listchanges autoconf automake bat btrfs-progs build-essential certbot cryptsetup fd-find fzf git iftop iperf3 libblas-dev libcurl4-openssl-dev libgmp-dev liblapack-dev libmpfr-dev libssl-dev libtool mlocate openjdk-11-jdk systemd-coredump traceroute tree ufw unattended-upgrades
-wget wireguard xfsprogs zfsutils-linux zlib1g-dev zsh
+wget wireguard xfsprogs zfsutils-linux ripgrep zlib1g-dev zsh bpfcc-tools python-bpfcc libbpfcc
 
 # Add user
 /sbin/useradd -m build
@@ -40,8 +62,5 @@ ufw allow from 192.168.0.0/24
 ufw allow from 192.168.5.0/16
 echo "y" | ufw enable
 
-# Install ohmyzsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-su - build
-cd /home/build || return
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+installZsh
+su build -c "bash -c installZsh"
