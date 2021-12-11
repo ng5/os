@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+printf "%s " "this script will update/install new packages (y/n)?"
+read -r answer
+if [ "$answer" != "y" ]; then
+    exit 0
+fi
 function __internal_pacman_install() {
     if pacman -Q "$1" | grep -i "$1" >/dev/null 2>&1; then
         echo "pacman already installed [$1]"
@@ -157,10 +162,9 @@ code --install-extension --force foxundermoon.shell-format --force
 code --install-extension Shan.code-settings-sync --force
 code --install-extension eamodio.gitlens --force
 code --install-extension VisualStudioExptTeam.vscodeintellicode --force
-code --install-extension esbenp.prettier-vscode --force
 code --install-extension CoenraadS.bracket-pair-colorizer --force
 code --install-extension xabikos.JavaScriptSnippets --force
-
+code --install-extension timonwong.shellcheck --force
 __internal_yay_install clion
 __internal_yay_install webstorm
 __internal_yay_install android-studio
