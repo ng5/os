@@ -35,6 +35,7 @@ function __internal_yay_install() {
 # __internal_pacman_install xf86-video-amdgpu
 
 # General use packages
+__internal_pacman_install cups
 __internal_pacman_install nfs-utils
 __internal_pacman_install samba
 __internal_pacman_install xarchiver
@@ -191,6 +192,10 @@ sudo mv /opt/Citrix/ICAClient/UtilDaemon /opt/Citrix/ICAClient/UtilDaemon_Delete
 # Timezone file
 sudo rm -rf /etc/timezone
 sudo ln -s /usr/share/zoneinfo/Europe/London /etc/timezone
+sudo systemctl enable systemd-timesyncd.service
+sudo systemctl restart systemd-timesyncd.service
+sudo systemctl enable cups.service
+sudo systemctl restart cups.service
 
 # zsh
 if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
