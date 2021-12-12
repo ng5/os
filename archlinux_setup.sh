@@ -93,6 +93,7 @@ sudo wget -O /usr/local/bin/move-to-next-monitor https://raw.githubusercontent.c
 sudo chmod +x /usr/local/bin/move-to-next-monitor
 
 # Development packages
+__internal_pacman_install man-pages
 __internal_pacman_install gdb
 __internal_pacman_group_install base-devel
 __internal_pacman_install linux-headers
