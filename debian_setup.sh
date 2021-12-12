@@ -24,10 +24,12 @@ export -f installZsh
 touch ~/.hushlogin
 apt update && apt upgrade
 apt remove -y nano
-apt install -y vim apt-listchanges autoconf automake bat build-essential certbot cryptsetup fd-find fzf git iftop iperf3 libblas-dev libcurl4-openssl-dev libgmp-dev liblapack-dev libmpfr-dev libssl-dev libtool mlocate openjdk-11-jdk systemd-coredump traceroute tree ufw unattended-upgrades wget wireguard xfsprogs ripgrep zlib1g-dev zsh clang clang-format llvm gdb
+apt install -y vim apt-listchanges autoconf automake bat build-essential certbot cryptsetup fd-find fzf git iftop iperf3 libblas-dev libcurl4-openssl-dev libgmp-dev liblapack-dev libmpfr-dev libssl-dev libtool mlocate openjdk-11-jdk systemd-coredump traceroute tree ufw unattended-upgrades wget wireguard xfsprogs ripgrep zlib1g-dev zsh clang clang-format llvm gdb manpages manpages-dev
 # Add user
+/sbin/groupadd -f systemd-journal-remote
 /sbin/useradd -m build
-/sbin/usermod -aG sudo build
+/sbin/usermod -aG sudo,systemd-journal,systemd-journal-remote build
+
 cp -r ~/.ssh /home/build/
 chown -R build:build /home/build/.ssh
 chmod -R 700 /home/build/.ssh
