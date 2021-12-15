@@ -183,7 +183,7 @@ sudo archlinux-java set java-11-openjdk
 
 # These 7 programs seem to be spyware provided by Citrix
 sudo mv /opt/Citrix/ICAClient/AuthManagerDaemon /opt/Citrix/ICAClient/AuthManagerDaemon_Deleted 2>/dev/null
-sudo mv /opt/Citrix/ICAClient/icasessionmgr_Deleted /opt/Citrix/ICAClient/icasessionmgr_Deleted_Deleted 2>/dev/null
+sudo mv /opt/Citrix/ICAClient/icasessionmgr /opt/Citrix/ICAClient/icasessionmgr_Deleted 2>/dev/null
 sudo mv /opt/Citrix/ICAClient/NativeMessagingHost /opt/Citrix/ICAClient/NativeMessagingHost_Deleted 2>/dev/null
 sudo mv /opt/Citrix/ICAClient/PrimaryAuthManager /opt/Citrix/ICAClient/PrimaryAuthManager_Deleted 2>/dev/null
 sudo mv /opt/Citrix/ICAClient/selfservice /opt/Citrix/ICAClient/selfservice_Deleted 2>/dev/null
