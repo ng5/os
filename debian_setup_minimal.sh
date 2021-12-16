@@ -25,7 +25,8 @@ export -f installZsh
 touch ~/.hushlogin
 apt update && apt upgrade
 apt remove -y nano
-apt install -y vim apt-listchanges bat git certbot fd-find fzf git iftop iperf3 mlocate systemd-coredump traceroute tree ufw unattended-upgrades wget wireguard xfsprogs ripgrep zsh gdb manpages manpages-dev
+apt install -y apt-listchanges bat certbot fd-find fzf gdb git iftop iperf3 manpages manpages-dev mlocate postgresql-client ripgrep systemd-coredump traceroute tree ufw unattended-upgrades wget wireguard xfsprogs zsh vim
+
 # Add user
 /sbin/groupadd -f systemd-journal-remote
 /sbin/useradd -m build
@@ -58,6 +59,11 @@ systemctl restart docker
 composeUrl=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep -i browser_download_url | grep -i "docker-compose-Linux-x86_64\"" | cut -d '"' -f 4)
 curl -L -o /usr/local/bin/docker-compose "$composeUrl"
 chmod +x /usr/local/bin/docker-compose
+
+# install redis but disable server
+apt install redis-server
+systemctl stop redis
+systemctl disable redis
 
 # Install firewall
 ufw disable
