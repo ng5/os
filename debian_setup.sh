@@ -56,7 +56,7 @@ systemctl restart docker
 
 # install docker-compose
 composeUrl=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep -i browser_download_url | grep -i "docker-compose-Linux-x86_64\"" | cut -d '"' -f 4)
-curl -o /usr/local/bin/docker-compose "$composeUrl"
+curl -L -o /usr/local/bin/docker-compose "$composeUrl"
 chmod +x /usr/local/bin/docker-compose
 
 # Install firewall
