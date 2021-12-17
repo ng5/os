@@ -89,7 +89,7 @@ function setupFirewall() {
 COMMIT
 EOL
     fi
-    echo "updating /etc/hosts "
+    echo "updating /etc/docker/daemon.json "
     cat >/etc/docker/daemon.json <<EOL
 {
 	"iptables":false,
@@ -131,6 +131,49 @@ function services() {
     echo -n "restarting docker: "
     systemctl restart docker &>/dev/null && echo "OK" || echo "Failed"
     echo "services complete"
+}
+
+function setupWireguardClient() {
+    local USAGE="setupWireguardClient <ipaddr> <remotepublickey> <remote>"
+    local ipaddr="$1"
+    local remotekey="$2"
+    local remote="$3"
+    if [ -z "$ipaddr" ]; then
+        echo "missing ipaddr: $USAGE"
+        return
+    fi
+    if [ -z "$remotekey" ]; then
+        echo "missing ipaddr: $USAGE"
+        return
+    fi
+    if [ -z "$remote" ]; then
+        echo "missing ipaddr: $USAGE"
+        return
+    fi
+    cd /etc/wireguard || return
+    systemctl stop wg-quick@wg1 &>/dev/null
+    wg genkey | tee privatekey | wg pubkey >publickey
+    local private
+    private=$(cat /etc/wireguard/privatekey)
+    local public
+    public=$(cat /etc/wireguard/publickey)
+    echo "creating /etc/wireguard/wg1.conf"
+    touch /etc/wireguard/wg1.conf &>/dev/null
+    cat >/etc/wireguard/wg1.conf <<EOL
+[Interface]
+Address = $ipaddr
+SaveConfig = true
+PrivateKey = $private
+
+[Peer]
+PublicKey = $remotekey
+AllowedIPs = 192.168.5.0/24
+Endpoint = $remote
+PersistentKeepalive = 15
+EOL
+    echo "add public key to remote: $public"
+    systemctl enable wg-quick@wg1
+    systemctl restart wg-quick@wg1
 }
 
 export -f installZsh
