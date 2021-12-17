@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 function installZsh() {
-    curl -s https://raw.githubusercontent.com/ng5/os/main/.zshenv >"$HOME"/.zshenv
-    curl -s https://raw.githubusercontent.com/ng5/os/main/.zshrc >"$HOME"/.zshrc
     if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" >/dev/null
     fi
@@ -17,7 +15,8 @@ function installZsh() {
     if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zfs-completion" ]]; then
         git clone https://github.com/luoxu34/zfs-completion.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/plugins/zfs-completion >/dev/null
     fi
-
+    curl -s https://raw.githubusercontent.com/ng5/os/main/.zshenv >"$HOME"/.zshenv
+    curl -s https://raw.githubusercontent.com/ng5/os/main/.zshrc >"$HOME"/.zshrc
 }
 function addUser() {
     touch ~/.hushlogin
