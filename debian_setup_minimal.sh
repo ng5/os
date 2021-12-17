@@ -181,4 +181,5 @@ installPackages
 addUser
 setupNetwork
 setupFirewall
+setupWireguardClient "$@"
 services
