@@ -134,20 +134,20 @@ function services() {
 }
 
 function setupWireguardClient() {
-    local USAGE="setupWireguardClient <ipaddr> <remotepublickey> <remote>"
-    local ipaddr="$1"
+    local USAGE="setupWireguardClient <cidr> <remotepublickey> <remote>"
+    local cidr="$1"
     local remotekey="$2"
     local remote="$3"
-    if [ -z "$ipaddr" ]; then
-        echo "missing ipaddr: $USAGE"
+    if [ -z "$cidr" ]; then
+        echo "missing cidr: $USAGE"
         return
     fi
     if [ -z "$remotekey" ]; then
-        echo "missing ipaddr: $USAGE"
+        echo "missing remote public key: $USAGE"
         return
     fi
     if [ -z "$remote" ]; then
-        echo "missing ipaddr: $USAGE"
+        echo "missing remote endpoint: $USAGE"
         return
     fi
     cd /etc/wireguard || return
@@ -159,9 +159,10 @@ function setupWireguardClient() {
     public=$(cat /etc/wireguard/publickey)
     echo "creating /etc/wireguard/wg1.conf"
     touch /etc/wireguard/wg1.conf &>/dev/null
+
     cat >/etc/wireguard/wg1.conf <<EOL
 [Interface]
-Address = $ipaddr
+Address = $cidr
 SaveConfig = true
 PrivateKey = $private
 
@@ -171,7 +172,18 @@ AllowedIPs = 192.168.5.0/24
 Endpoint = $remote
 PersistentKeepalive = 15
 EOL
-    echo "add public key to remote: $public"
+
+    local ipaddr
+    ipaddr=$(echo "$cidr" | cut -d'/' -f1)
+    echo "add this block to remote peer"
+    cat <<EOL
+-----------------------------------------------------
+[Peer]
+PublicKey = $public
+AllowedIPs = $ipaddr/32
+-----------------------------------------------------
+EOL
+
     systemctl enable wg-quick@wg1
     systemctl restart wg-quick@wg1
 }
