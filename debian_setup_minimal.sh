@@ -61,6 +61,7 @@ function installPackages() {
     curl -sL -o /usr/local/bin/docker-compose "$composeUrl"
     chmod +x /usr/local/bin/docker-compose
 
+    ln -s /usr/bin/fdfind /usr/bin/fd
     echo "installPackages complete"
 }
 
