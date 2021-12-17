@@ -131,8 +131,6 @@ function services() {
     systemctl enable docker &>/dev/null && echo "OK" || echo "Failed"
     echo -n "restarting docker: "
     systemctl restart docker &>/dev/null && echo "OK" || echo "Failed"
-    echo -n "restarting sshd: "
-    systemctl restart sshd &>/dev/null && echo "OK" || echo "Failed"
     echo "services complete"
 }
 
