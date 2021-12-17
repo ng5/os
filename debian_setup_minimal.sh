@@ -25,8 +25,7 @@ function addUser() {
     /sbin/groupadd -f systemd-journal-remote >/dev/null
     /sbin/useradd -m build >/dev/null
     /sbin/usermod -aG docker,sudo,systemd-journal,systemd-journal-remote build >/dev/null
-    sed -i -e 's/.*%sudo ALL=(ALL) ALL/%sudo ALL=(ALL) NOPASSWD:ALL/g' /etc/sudoers
-    sed -i -e 's/.*%wheel ALL=(ALL) ALL/%wheel ALL=(ALL) NOPASSWD:ALL/g' /etc/sudoers
+    sed -i -e 's/.*%sudo	ALL=(ALL:ALL) ALL/%sudo	ALL=(ALL:ALL) NOPASSWD:ALL/g' /etc/sudoers
     cp -r ~/.ssh /home/build/
     chown -R build:build /home/build/.ssh
     chmod -R 700 /home/build/.ssh
