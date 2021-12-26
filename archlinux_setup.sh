@@ -167,11 +167,6 @@ code --install-extension VisualStudioExptTeam.vscodeintellicode --force
 code --install-extension CoenraadS.bracket-pair-colorizer --force
 code --install-extension xabikos.JavaScriptSnippets --force
 code --install-extension timonwong.shellcheck --force
-__internal_yay_install clion
-__internal_yay_install webstorm
-__internal_yay_install android-studio
-__internal_yay_install goland
-__internal_yay_install pycharm-professional
 __internal_yay_install mugshot
 
 # Accept android licenses
