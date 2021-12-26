@@ -164,7 +164,6 @@ code --install-extension --force foxundermoon.shell-format --force
 code --install-extension Shan.code-settings-sync --force
 code --install-extension eamodio.gitlens --force
 code --install-extension VisualStudioExptTeam.vscodeintellicode --force
-code --install-extension CoenraadS.bracket-pair-colorizer --force
 code --install-extension xabikos.JavaScriptSnippets --force
 code --install-extension timonwong.shellcheck --force
 __internal_yay_install mugshot
